@@ -1,0 +1,65 @@
+<div class="bg-gray-900 text-white content">
+    <div class="container flex">
+        <!-- Navigation -->
+        <nav class="flex flex-col justify-between bg-gray-800 w-80 p-4">
+            <!-- New Chat Button -->
+            <button (click)="onNewMessage()" title="{{botMessage ? 'Waiting message' : ''}}" [disabled]="botMessage"
+                class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded mb-4">New Chat</button>
+            <div class="flex flex-col space-y-2">
+                <button (click)="onSignOut()"
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 rounded">Sign Out</button>
+            </div>
+        </nav>
+
+        <div class="flex-grow">
+            <div class="flex justify-center items-center h-screen">
+                <div class="w-full max-w-md">
+                    <div class="flex flex-col h-screen">
+                        <div class="flex-1 overflow-y-auto px-4 py-8">
+                            <div *ngFor="let item of messageItem">
+                                <app-message [botMessage]="item.botMessage" [message]="item.message"></app-message>
+                            </div>
+                        </div>
+                        <div
+                            class="overflow-hidden relative border border-token-border-medium dark:text-white rounded-2xl bg-token-main-surface-primary flex flex-col w-full mb-10">
+                            <textarea #textarea title="{{botMessage ? 'Waiting message' : ''}}" [disabled]="botMessage" (input)="onInputChange()" (keydown)="onKeyDown($event)" rows="1"
+                                placeholder="Message ChatCloseFake…"
+                                class="m-0 w-full resize-none border-0 bg-transparent focus:ring-0 focus-visible:ring-0 dark:bg-transparent max-h-25 py-[10px] pr-10 md:py-3.5 md:pr-12 placeholder-black/50 dark:placeholder-white/50 pl-3 md:pl-4"
+                                style="height: 52px; overflow-y: hidden;"></textarea>
+                            <button (click)="onSendMessage()" #sendButton
+                                class="absolute bottom-1.5 right-2 rounded-lg border border-black bg-black p-0.5 text-white transition-colors disabled:text-gray-400 disabled:opacity-10 dark:border-white dark:bg-white dark:hover:bg-white md:bottom-3 md:right-3"
+                                title="Send Message" [disabled]="hasMessage">
+                                <span class="svg-icon" data-state="closed">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        class="text-white dark:text-black">
+                                        <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-confirmDialog #cd>
+        <ng-template pTemplate="headless" let-message>
+            <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+                <div
+                    class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
+                    <i class="pi pi-question text-5xl"></i>
+                </div>
+                <span class="font-bold text-2xl block mb-2 mt-4">{{ message.header }}</span>
+                <p class="mb-0">{{ message.message }}</p>
+                <div class="flex align-items-center gap-2 mt-4">
+                    <button pButton label="Save" (click)="cd.accept()" class="w-8rem"></button>
+                    <button pButton label="Cancel" (click)="cd.reject()" class="p-button-outlined w-8rem "></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-confirmDialog>
+</div>

@@ -1,0 +1,22 @@
+<div class="flex items-start mb-4">
+    <img src="{{botMessage ? 'favicon.ico' : 'assets/user.ico'}}" alt="Avatar"
+        class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-700">
+    <div class="ml-3">
+        <p class="text-sm bg-gray-800 rounded-lg p-3 whitespace-pre-line">
+            <svg *ngIf="message == ''; else messageBlock" id="dots" width="70px" height="20px" viewBox="0 0 70 20" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <defs></defs>
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <g id="dots" sketch:type="MSArtboardGroup" fill="#A3A3A3">
+                        <circle id="dot1" sketch:type="MSShapeGroup" cx="25" cy="10" r="5"></circle>
+                        <circle id="dot2" sketch:type="MSShapeGroup" cx="45" cy="10" r="5"></circle>
+                        <circle id="dot3" sketch:type="MSShapeGroup" cx="65" cy="10" r="5"></circle>
+                    </g>
+                </g>
+            </svg>
+            <ng-template #messageBlock>{{message}}</ng-template>
+        </p>
+
+    </div>
+</div>
