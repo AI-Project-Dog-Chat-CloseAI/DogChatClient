@@ -33,6 +33,10 @@ export class RequestService {
     this.socket.emit('message', {message});
   }
 
+  activeMessageRequest(token : string) {
+    this.socket.emit('active', {token});
+  }
+
   getDataRequest(request : string) : Observable<any> {
     return new Observable((ob) => {
       this.socket.on(request, (data : any) => {

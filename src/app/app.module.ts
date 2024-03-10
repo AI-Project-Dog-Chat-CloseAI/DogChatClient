@@ -14,6 +14,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { MessageComponent } from './components/message/message.component';
 import { FormsModule } from '@angular/forms';
+import { VerifyComponent } from './components/verify/verify.component';
+import { ActiveComponent } from './components/active/active.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { FormsModule } from '@angular/forms';
     SignUpComponent,
     HomeComponent,
     MessageComponent,
+    VerifyComponent,
+    ActiveComponent,
+    ErrorComponent,
   ],
   imports: [
     FormsModule,

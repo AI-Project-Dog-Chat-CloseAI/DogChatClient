@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
       this.service.getDataRequest('register').subscribe((data) => {
-        if(data.status) this.router.navigate(['/login']);
+        if(data.status) this.router.navigate(['/verify']);
         else this.errorMessage = data.message; 
       })
   }
