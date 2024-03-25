@@ -15,7 +15,7 @@ export class ActiveComponent implements OnInit {
       this.query = params['token'];
     });
     this.service.activeMessageRequest(this.query);
-    this.service.getDataRequest('active').subscribe(data => {
+    this.service.getDataRequest('active').subscribe((data) => {
       if(data.status) this.router.navigate(['/login']);
       else this.router.navigate(['/error']);
     })
